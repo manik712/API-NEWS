@@ -12,7 +12,7 @@ trimeData.forEach((category)=>{
   count = count + 1;
    const div =document.createElement("div");
    div.innerHTML = `
-   <a class="tab">${category.category_name}${count}</a> 
+   <a   onclick="handelLoadNews('${category.category_id}')"   class="tab">${category.category_name}${count}</a> 
 
    
    
@@ -21,7 +21,15 @@ tabContainer.appendChild(div);
 
 });
 
- console.log(data.data.news_category);
+//  console.log(data.data.news_category);
+};
+const handelLoadNews = async (categoryId)=>{
+
+  const res = await fetch(`https://openapi.programming-hero.com/api/news/category/${categoryId}`)
+const data = await res.json();
+console.log(data.data);
+
+
 }
 
 
